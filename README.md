@@ -1,3 +1,3 @@
-# LinkedList 
+# Binary Search Tree (BTS)
 
-## This project is meant to help me design a linkelist, since it isnt in-built in javaScript. 
+## This project is meant to help me design a balanced Binary Search Tree (BTS) using JavaScript.
