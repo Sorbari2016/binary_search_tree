@@ -38,7 +38,72 @@ class Tree {
     return root; 
   }
 
+  // Helper method to find the smallest node in a subtree
+  findMin(node) {
+    while (node.left !== null) {
+      node = node.left;
+    }
+    return node;
+  }
+
+
+  // To insert a value
+  insert(root, value) {
+    if (root === null) {
+      return new Node(value); 
+    }
+
+    // Prevent duplicates
+    if (value === root.data) return root;
+
+    if (value < root.data) {
+      root.left = this.insert(root.left, value);
+    } else {
+      root.right = this.insert(root.right, value);
+    }
+
+    return root;
+  }
+
+  // To delete a value
+  delete(root, value) {
+    if (root === null) {
+      return root; // nothing to delete
+    }
+
+    if (value < root.data) {
+      root.left = this.delete(root.left, value);
+    } else if (value > root.data) {
+      root.right = this.delete(root.right, value);
+    } else {
+    
+    // Found the node to delete
+
+    // If there is no child
+    if (root.left === null && root.right === null) {
+      return null;
+    }
+
+    // If there is a child
+    if (root.left === null) {
+      return root.right;
+    } else if (root.right === null) {
+      return root.left;
+    }
+
+    // if there are two children
+      let successor = this.findMin(root.right);
+      root.data = successor.data; // copy successor value
+      root.right = this.delete(root.right, successor.data); // delete successor
+    }
+
+    return root;
+  }
+
+
+
 }
+
 
 
 
