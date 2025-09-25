@@ -108,7 +108,7 @@ class Tree {
       if (current.data === value) {
         return current;
       }
-      
+
       if (value < current.data) {
         current = current.left;
       } else {
@@ -119,12 +119,55 @@ class Tree {
     return null; // not found
   }
 
-
-
   // Create a method similar to forEach in arrays
-  levelOrderForEach(callBack) {
-    console.log(this.root.length)
+  levelOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback function is required");
+    }
+
+    if (this.root === null) return; // empty tree
+
+    // Use a queue for breadth-first traversal
+    const queue = [this.root];
+
+    while (queue.length > 0) {
+      const current = queue.shift(); // remove first element
+      callback(current); // apply callback to the node
+
+    // enqueue children
+      if (current.left !== null) queue.push(current.left);
+      if (current.right !== null) queue.push(current.right);
+    }
   }
+
+  // Create a method that run a callback in a left-root-right manner
+  inOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback must be a function");
+    }
+
+    const traverse = (node) => {
+      if (node !== null) {
+        traverse(node.left);
+        callback(node);
+        traverse(node.right);
+      }
+    };
+
+    traverse(this.root); // start from root
+  }
+
+
+  // Create a method that runs a callback in a root-left-right manner
+  preOrderForEach(callback) {
+
+  }
+
+  // Create a method that runs a callback in a left-right-root manner
+  postOrderForEach(callback) {
+
+  }
+
 
 
 
