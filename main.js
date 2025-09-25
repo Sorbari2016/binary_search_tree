@@ -37,7 +37,8 @@ console.log(tree.find(17))
 
 tree.levelOrderForEach((node) => console.log(node.data)); 
 
-tree.inOrderForEach(node => console.log(node.data));
+tree.inOrderForEach(node => console.log("In-order:", node.data));
+tree.preOrderForEach(node => console.log("Pre-order:", node.data));
+tree.postOrderForEach(node => console.log("Post-order:", node.data));
 
-tree.preOrderForEach(node => console.log(node.data)); 
 

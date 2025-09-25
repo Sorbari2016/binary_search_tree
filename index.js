@@ -176,11 +176,20 @@ class Tree {
 
   // Create a method that runs a callback in a left-right-root manner
   postOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback must be a function");
+    }
 
+    const traverse = (node) => {
+      if (node !== null) {
+        traverse(node.left);
+        traverse(node.right);
+        callback(node);
+      }
+    };
+
+    traverse(this.root);
   }
-
-
-
 
 }
 
