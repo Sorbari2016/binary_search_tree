@@ -31,7 +31,9 @@ console.log(prettyPrint(tree2.root));
 tree.delete(tree.root, 7)
 console.log(prettyPrint(tree.root)); 
 
-console.log(tree.find(tree.root,   4))
+console.log(tree.find(4))
+
+console.log(tree.find(17))
 
 tree.levelOrderForEach((number) => console.log(number)); 
 

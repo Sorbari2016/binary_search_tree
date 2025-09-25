@@ -102,22 +102,28 @@ class Tree {
 
   // Create a method to find a given value
   find(value) {
-  if (this.root === null) return null; // Base case: if the node doesnt exist
+    let current = this.root;
 
-  // If we found the node with the value, return it
-  if (this.root.data === value) return this.root; 
+    while (current !== null) {
+      if (current.data === value) {
+        return current;
+      }
+      
+      if (value < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
 
-  // If value is smaller, search the left subtree
-  if (value < this.root.data) return this.find(this.root.left, value);
-  
-  // If value is larger, search the right subtree
-  return this.find(this.root.right, value);
+    return null; // not found
   }
+
 
 
   // Create a method similar to forEach in arrays
   levelOrderForEach(callBack) {
-
+    console.log(this.root.length)
   }
 
 
