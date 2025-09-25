@@ -28,3 +28,10 @@ tree2.root = tree2.insert(tree2.root, 10);
 
 console.log(prettyPrint(tree2.root)); 
 
+tree.delete(tree.root, 7)
+console.log(prettyPrint(tree.root)); 
+
+console.log(tree.find(tree.root,   4))
+
+tree.levelOrderForEach((number) => console.log(number)); 
+

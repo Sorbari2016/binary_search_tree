@@ -67,7 +67,7 @@ class Tree {
 
   // To delete a value
   delete(root, value) {
-    if (root === null) {
+    if (root === null) {  // Base case
       return root; // nothing to delete
     }
 
@@ -98,6 +98,26 @@ class Tree {
     }
 
     return root;
+  }
+
+  // Create a method to find a given value
+  find(value) {
+  if (this.root === null) return null; // Base case: if the node doesnt exist
+
+  // If we found the node with the value, return it
+  if (this.root.data === value) return this.root; 
+
+  // If value is smaller, search the left subtree
+  if (value < this.root.data) return this.find(this.root.left, value);
+  
+  // If value is larger, search the right subtree
+  return this.find(this.root.right, value);
+  }
+
+
+  // Create a method similar to forEach in arrays
+  levelOrderForEach(callBack) {
+
   }
 
 
