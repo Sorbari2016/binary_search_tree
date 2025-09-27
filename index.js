@@ -225,9 +225,30 @@ class Tree {
       index++;
     }
 
-  return null; // value not found
-}
+    return null; // value not found
+  }
 
+  // Create a method to check if a tree is balanced
+  isBalanced() {
+    // recursive helper
+    const height = (node) => {
+      if (node === null) return -1;
+      return 1 + Math.max(height(node.left), height(node.right));
+    };
+
+    const check = (node) => {
+      if (node === null) return true; // empty = balanced.
+
+    const leftHeight = height(node.left);
+    const rightHeight = height(node.right);
+
+    if (Math.abs(leftHeight - rightHeight) > 1) return false;
+
+      return check(node.left) && check(node.right);
+    };
+
+    return check(this.root);
+  }
 
 }
 

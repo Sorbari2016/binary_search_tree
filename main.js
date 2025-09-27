@@ -44,4 +44,20 @@ tree.postOrderForEach(node => console.log("Post-order:", node.data));
 console.log(tree.height(8))
 console.log(tree.depth(4))
 
+console.log(tree.isBalanced()); 
+
+const tree3 = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+console.log(prettyPrint(tree3.root))
+console.log(tree3.isBalanced()); 
+
+tree3.insert(tree3.root, 100);
+tree3.insert(tree3.root, 101);
+tree3.insert(tree3.root, 102);
+console.log(tree3.isBalanced());
+console.log(prettyPrint(tree3.root))
+
+
+
+
 
