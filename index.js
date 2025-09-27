@@ -191,6 +191,24 @@ class Tree {
     traverse(this.root);
   }
 
+  // Create a method that returns the height of a node
+  height(value) {
+    if (this.root === null) return -1; // empty tree
+
+    const current = this.find(value);
+    if (current === null) return null; // node not found
+
+    // Recursive helper to compute height
+    const computeHeight = (node) => {
+    if (node === null) return -1; // base: empty child has height -1
+      return 1 + Math.max(computeHeight(node.left), computeHeight(node.right));
+    };
+
+    return computeHeight(current);
+  }
+
+
+
 }
 
 
