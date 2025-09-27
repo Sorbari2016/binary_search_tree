@@ -207,6 +207,26 @@ class Tree {
     return computeHeight(current);
   }
 
+  // Create a method to return the depth of the node containing a given value
+  depth(value) {
+    if (this.root === null) return -1; // empty tree
+
+    let node = this.root;
+    let index = 0;
+
+    while (node !== null) {
+      if (value === node.data) {
+        return index; // found the node
+      } else if (value < node.data) {
+        node = node.left;
+      } else {
+        node = node.right;
+      }
+      index++;
+    }
+
+  return null; // value not found
+}
 
 
 }
