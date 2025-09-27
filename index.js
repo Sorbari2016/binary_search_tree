@@ -250,6 +250,25 @@ class Tree {
     return check(this.root);
   }
 
+  // Create a method to rebalance an unbalanced tree
+  rebalance() {
+    const values = [];
+
+    // inorder traversal to collect sorted values
+    const inorder = (node) => {
+      if (node === null) return;
+      inorder(node.left);
+      values.push(node.data);
+      inorder(node.right);
+    };
+
+    inorder(this.root);
+
+    // rebuild balanced tree
+    this.root = this.buildTree(values, 0, values.length - 1);
+  }
+
+
 }
 
 

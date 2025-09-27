@@ -57,6 +57,10 @@ tree3.insert(tree3.root, 102);
 console.log(tree3.isBalanced());
 console.log(prettyPrint(tree3.root))
 
+tree3.rebalance(); 
+console.log(tree3.isBalanced()); 
+console.log(prettyPrint(tree3.root))
+
 
 
 
