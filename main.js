@@ -1,4 +1,6 @@
-import {Tree, Node} from './index.js'; 
+// TEST, DRIVER SCRIPT.  
+
+import { Tree } from "./index.js";
 
 // To visualise your Tree
 const prettyPrint = (node, prefix = '', isLeft = true) => {
@@ -14,26 +16,22 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
   }
 };
 
-const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);  
+function generateRandomArray(length, maxValue) {
+  const array = []; 
+  for (let i = 0; i < length; i++) {
+    array.push(Math.floor(Math.random() * maxValue)); 
+  }
+  return array; 
+}
 
+const numbersBelow100 = generateRandomArray(15, 100); 
+
+const tree = new Tree(numbersBelow100); 
+
+console.log(tree.root)
 console.log(prettyPrint(tree.root))
 
-const tree2 = new Tree([]); 
-tree2.root = tree2.insert(tree2.root, 10);
-
-console.log(tree2.root); 
-
-tree2.root = tree2.insert(tree2.root, 11); 
-tree2.root = tree2.insert(tree2.root, 10); 
-
-console.log(prettyPrint(tree2.root)); 
-
-tree.delete(tree.root, 7)
-console.log(prettyPrint(tree.root)); 
-
-console.log(tree.find(4))
-
-console.log(tree.find(17))
+console.log(tree.isBalanced())
 
 tree.levelOrderForEach((node) => console.log(node.data)); 
 
@@ -41,27 +39,20 @@ tree.inOrderForEach(node => console.log("In-order:", node.data));
 tree.preOrderForEach(node => console.log("Pre-order:", node.data));
 tree.postOrderForEach(node => console.log("Post-order:", node.data));
 
-console.log(tree.height(8))
-console.log(tree.depth(4))
+tree.root = tree.insert(tree.root, 101);
+tree.root = tree.insert(tree.root, 120); 
+tree.root = tree.insert(tree.root, 115);
 
-console.log(tree.isBalanced()); 
+console.log(prettyPrint(tree.root))
 
-const tree3 = new Tree([1, 2, 3, 4, 5, 6, 7]);
+console.log(tree.isBalanced())
 
-console.log(prettyPrint(tree3.root))
-console.log(tree3.isBalanced()); 
+tree.rebalance(); 
 
-tree3.insert(tree3.root, 100);
-tree3.insert(tree3.root, 101);
-tree3.insert(tree3.root, 102);
-console.log(tree3.isBalanced());
-console.log(prettyPrint(tree3.root))
+console.log(tree.isBalanced())
 
-tree3.rebalance(); 
-console.log(tree3.isBalanced()); 
-console.log(prettyPrint(tree3.root))
+tree.levelOrderForEach((node) => console.log("Level-order", node.data)); 
 
-
-
-
-
+tree.inOrderForEach(node => console.log("In-order:", node.data));
+tree.preOrderForEach(node => console.log("Pre-order:", node.data));
+tree.postOrderForEach(node => console.log("Post-order:", node.data));
